@@ -8,8 +8,6 @@ if [ ! -f ~/.taigarc ]; then
     read -p "Username or email: " USERNAME
     read -r -s -p "Password: " PASSWORD
 
-    echo "$PASSWORD"
-
     DATA=$(jq --null-input \
         --arg username "$USERNAME" \
         --arg password "$PASSWORD" \
