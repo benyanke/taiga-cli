@@ -7,6 +7,7 @@ if [ ! -f ~/.taigarc ]; then
     echo "No ~/.taigarc, will create one now"
     read -p "Username or email: " USERNAME
     read -r -s -p "Password: " PASSWORD
+    echo 
 
     DATA=$(jq --null-input \
         --arg username "$USERNAME" \
@@ -26,6 +27,7 @@ if [ ! -f ~/.taigarc ]; then
         echo $USER_AUTH_DETAIL
         exit 1
     else
+        echo "Login successful, creating ~/.taigarc"
         echo "AUTH_TOKEN=${AUTH_TOKEN}" >> ~/.taigarc
         echo "USER_ID=${USER_ID}" >> ~/.taigarc
     fi
