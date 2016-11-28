@@ -45,8 +45,8 @@ get_from_api() {
 
 print_common_item() {
     local item="$1"
-    local subject=$(echo "$item" | jq --raw-output '.subject')
-    local tags=$(echo "$item" | jq --raw-output '.tags | join(", ")')
+    local subject=$(echo "$item" | jq --arg i $i --raw-output '.subject')
+    local tags=$(echo "$item" | jq --arg i $i --raw-output '[.tags[][0]] | join(", ")')
     echo "$subject [$tags]"
 }
 
